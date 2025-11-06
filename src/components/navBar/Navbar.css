@@ -1,0 +1,197 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  background: #f9fbfdf6; /* color claro */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* ---- Izquierda (logo + título) ---- */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.navbar-logo {
+  height: 36px;
+}
+
+.navbar-title h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.navbar-title span {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+/* ---- Centro (links) ---- */
+.navbar-center ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-btn {
+  outline: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.navbar-btn:hover{
+  color: #007bff;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ---- Derecha (botón) ---- */
+.btn-unete {
+  outline: none;
+  background: #f9fbfd;
+  color: #000000;
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #8f8f8f;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn-unete:hover {
+  border-width: 2px;
+  border-color: #000000;
+}
+.btn-login {
+  margin-left: 1rem;
+  outline: none;
+  background: #000000;
+  color: #f9fbfd;
+  padding: 0.4rem;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #8f8f8f;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn-login:hover {
+  background: #333333;
+}
+
+/* --- MENÚ DE USUARIO --- */
+.user-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.user-name {
+  background-color: #ffffff;
+  border: 1px solid #ffffff33;
+  border-radius: 8px;
+  color: rgb(0, 0, 0);
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.user-name:hover {
+  background-color: #00000022;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: #f7f7f7;
+  border: 1px solid #333;
+  border-radius: 5px;
+  min-width: 160px;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.dropdown-menu li {
+  padding: 10px 16px;
+}
+
+.dropdown-menu li a,
+.dropdown-menu li button {
+  color: #000000;
+  outline: none;
+  text-decoration: none;
+  width: 100%;
+  display: block;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #00000022;
+}
+
+.logout {
+  color: #d9534f !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .navbar-center ul {
+    flex-direction: row;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .navbar-right {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
