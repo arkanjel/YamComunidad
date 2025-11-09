@@ -46,19 +46,32 @@ export const Servicios = () => {
         <div className="servicios-flex">
           <div className="card-container">
             {beneficios.map((benefit) => (
-              <div
-                key={benefit._id}
-                className={`card ${benefit.masInfo ? "hoverable" : ""}`}
-                onClick={() => handleCardClick(benefit)}
-              >
-                <h3>{benefit.titulo}</h3>
-                <p>{benefit.descripcion}</p>
-
-                {benefit.masInfo && (
-                  <div className="card-overlay">
-                    <p>Más información</p>
-                  </div>
+              <div key={benefit._id} className="card benefit-card">
+                {benefit.imagen && (
+                  <img
+                    className="benefit-img"
+                    src={
+                      benefit.imagen.startsWith("http")
+                        ? benefit.imagen
+                        : `http://localhost:4000/api/uploads/${benefit.imagen}`
+                    }
+                    alt={benefit.titulo}
+                  />
                 )}
+
+                <div className="benefit-info">
+                  <h3>{benefit.titulo}</h3>
+                  <p>{benefit.descripcion}</p>
+
+                  {benefit.masInfo && (
+                    <button
+                      className="btn-mas-info"
+                      onClick={() => handleCardClick(benefit)}
+                    >
+                      Más información
+                    </button>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -101,7 +114,17 @@ export const Servicios = () => {
                 {selectedBenefit.texto && (
                   <p className="detalle">{selectedBenefit.texto}</p>
                 )}
+                 <a
+                className="btn-whatsapp"
+                target="_blank"
+                href={`https://wa.me/5491122334455?text=Hola!%20Estoy%20interesado%20en%20el%20beneficio:%20${encodeURIComponent(
+                  selectedBenefit.titulo
+                )}`}
+              >
+                Consultar por WhatsApp
+              </a>
               </div>
+             
             </div>
           </div>
         </div>
