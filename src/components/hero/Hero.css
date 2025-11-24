@@ -21,15 +21,15 @@
 
 /* === IMAGEN === */
 .hero-image {
-  flex: 1 1 50%;
+  flex: 1 1 40%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh; /* ocupa casi toda la altura */
+  height: auto; /* ocupa casi toda la altura */
 }
 
 .hero-image img {
-  width: 100%;
+  width: 90%;
   height: 100%;
   object-fit: cover;
   border-radius: 20px;
@@ -40,7 +40,6 @@
 .hero-content {
   flex: 1 1 40%;
   color: white;
-  background: #07abd4cc;
   border-radius: 12px;
   padding: 2.5rem;
   text-align: center;
@@ -48,19 +47,28 @@
 }
 
 .hero-content h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  color: #fff;
+  font-size: 4rem;
+  margin-bottom: 2.5rem;
+  color: #07abd4cc;
   line-height: 1;
   font-weight: lighter;
+  text-align: start;
 }
 
+.hero-underline {
+  text-decoration: underline !important;
+}
+.hero-bold {
+  font-weight: 900 !important;
+}
 .hero-content p {
   text-align: center;
-  font-size: 1.5rem;
-  color: #f0f0f0;
+  font-size: 1.7rem;
+  color: #000000cc;
   margin-bottom: 1rem;
-  line-height: 1.6;
+  line-height: 1.7;
+  text-align: start;
+  /* font-weight: bold; */
 }
 
 /* === RESPONSIVE === */

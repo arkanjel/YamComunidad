@@ -8,7 +8,7 @@ export const PublicRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Bienvenida />} />
-      <Route path="/inicio" element={<Landing />} />
+      {/* <Route path="/inicio" element={<Landing />} /> */}
       <Route path="/login" element={<LoginPage />} />
       <Route path="/registro" element={<RegistroPage />} />
       <Route path="*" element={<Navigate to="/" />} />

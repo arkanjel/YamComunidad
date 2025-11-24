@@ -8,16 +8,21 @@ export const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { status, errorMessage } = useSelector((state) => state.auth);
+  const [remember, setRemember] = useState(false);
 
   const [correo, setCorreo] = useState("");
   const [contraseña, setContraseña] = useState("");
 
   const loginWithEmailAndPassword = async (e) => {
     e.preventDefault();
-
     // Ejecutar el thunk
-    const resultAction = await dispatch(loginUser({ correo, contraseña }));
-
+    const resultAction = await dispatch(loginUser({ correo, contraseña, remember }));
+    if (remember) {
+      localStorage.setItem("token", resultAction.payload.token);
+      localStorage.setItem("user", JSON.stringify(resultAction.payload));
+    } else {
+      sessionStorage.setItem("token", resultAction.payload.token);
+    }
     if (loginUser.fulfilled.match(resultAction)) {
       navigate("/inicio"); // Redirige si el login fue exitoso
     }
@@ -61,7 +66,12 @@ export const Login = () => {
 
           <div className="checkbox mb-3">
             <label>
-              <input type="checkbox" value="remember-me" /> Recuérdame
+              <input
+                type="checkbox"
+                checked={remember}
+                onChange={(e) => setRemember(e.target.checked)}
+              />{" "}
+              Recuérdame
             </label>
           </div>
 

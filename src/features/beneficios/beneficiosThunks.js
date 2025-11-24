@@ -8,8 +8,8 @@ import {
   onErrorBeneficio,
 } from "./beneficiosSlice";
 
-const API_URL = "http://localhost:4000/api/beneficios";
-const UPLOADS_URL = "http://localhost:4000/api/uploads/"; // 📸 ruta base de imágenes
+const baseUrl = import.meta.env.VITE_BASE_API_URL;
+const UPLOADS_URL = `${baseUrl}/uploads/`
 
 // Función auxiliar para agregar la URL completa a la imagen
 const withFullImagePath = (beneficio) => {
@@ -27,7 +27,7 @@ export const startLoadingBeneficios = () => {
   return async (dispatch) => {
     dispatch(onStartLoading());
     try {
-      const { data } = await axios.get(API_URL);
+      const { data } = await axios.get(`${baseUrl}/beneficios`);
       // 🔧 Agregar la URL completa a cada imagen
       const beneficiosConImagen = data.map(withFullImagePath);
       dispatch(onSetBeneficios(beneficiosConImagen));
@@ -53,7 +53,7 @@ export const startAddBeneficio = (beneficioData) => {
     };
 
     try {
-      const { data } = await axios.post(API_URL, beneficioData, config);
+      const { data } = await axios.post(`${baseUrl}/beneficios`, beneficioData, config);
       dispatch(onAddBeneficio(withFullImagePath(data))); // ✅ agrega URL completa
       return { ok: true };
     } catch (error) {
@@ -79,7 +79,7 @@ export const startUpdateBeneficio = (id, beneficioData) => {
     };
 
     try {
-      const { data } = await axios.put(`${API_URL}/${id}`, beneficioData, config);
+      const { data } = await axios.put(`${`${baseUrl}/beneficios`}/${id}`, beneficioData, config);
       dispatch(onUpdateBeneficio(withFullImagePath(data))); // ✅ agrega URL completa
       return { ok: true };
     } catch (error) {
@@ -102,7 +102,7 @@ export const startDeleteBeneficio = (id) => {
     };
 
     try {
-      await axios.delete(`${API_URL}/${id}`, config);
+      await axios.delete(`${`${baseUrl}/beneficios`}/${id}`, config);
       dispatch(onDeleteBeneficio(id));
       return { ok: true };
     } catch (error) {

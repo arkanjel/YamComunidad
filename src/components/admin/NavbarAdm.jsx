@@ -25,6 +25,18 @@ export const Navbar = () => {
             </Link>
           )}
 
+          {(rol === "admin" || rol === "superadmin" || rol === "dev") && (
+            <Link to="/admin/titulos" className="nav-item">
+              Titulos
+            </Link>
+          )}
+
+          {(rol === "admin" || rol === "superadmin" || rol === "dev") && (
+            <Link to="/admin/SiteMedia" className="nav-item">
+              SiteMedia
+            </Link>
+          )}
+
           {(rol === "superadmin" || rol === "dev") && (
             <Link to="/admin/usuarios" className="nav-item">
               Usuarios

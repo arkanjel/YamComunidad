@@ -8,15 +8,15 @@
 .section-header .badge {
   background: #e5edff;
   color: #2563eb;
-  font-size: 1rem;
+  font-size: 1.3rem;
   padding: 0.3rem 0.8rem;
-  border-radius: 5px;
+  border-radius: 10px;
   display: inline-block;
   margin-bottom: 1rem;
 }
 
 .section-header h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #1f2937;
   margin-bottom: 1rem;
@@ -50,21 +50,22 @@
 
 /* Comunidad */
 .comunidad {
-  max-width: 900px;
+  max-width: 90%;
   margin: 0 auto;
   text-align: center;
 }
 
 .comunidad h2 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
   color: #1f2937;
 }
 
 .comunidad p {
+  font-size: 1.3rem;
   color: #4b5563;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .beneficios {
@@ -80,26 +81,6 @@
   margin-bottom: 0.8rem;
   font-size: 0.95rem;
 }
-
-.yamplus {
-  margin-top: 2rem;
-  text-align: center;
-}
-
-.yamplus h3 {
-  font-size: 1.3rem;
-  color: #2563eb;
-  margin-bottom: 0.5rem;
-}
-
-.yamplus p {
-  color: #374151;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-
-
 
 /* ===== MODAL ===== */
 .modal-backdrop {
@@ -148,7 +129,7 @@
 }
 
 .modal-text h3 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #1f2937;
   margin-bottom: 0.5rem;
 }
@@ -160,7 +141,7 @@
 
 .modal-text .detalle {
   color: #374151;
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   line-height: 1.5;
 }
 /* Animaciones */
@@ -198,7 +179,7 @@
 .benefit-card {
   display: flex;
   flex-direction: row;
-  width: 420px;
+  width: 650px;
   min-height: 260px;
   background: white;
   border-radius: 14px;
@@ -232,32 +213,30 @@
 }
 
 .benefit-info h3 {
-  font-size: 1.3rem;
+  font-size: 2rem;
   color: #1f2937;
   margin-bottom: 0.4rem;
 }
 
 .benefit-info p {
+  font-size: 1.3rem;
   color: #4b5563;
   margin-bottom: 0.8rem;
 }
 
 /* ===== Botón Más Info ===== */
 .btn-mas-info {
-  width: fit-content;
+  width: 100%;
   margin-top: 1rem;
-  background: #07acd4;
-  color: white;
+  background: #07abd470;
+  color: rgb(0, 0, 0);
+  font-size: 2.5rem;
   border: none;
   padding: 0.6rem 1rem;
-  border-radius: 8px;
+  border-radius: 2px;
   cursor: pointer;
   font-size: 0.9rem;
   transition: background 0.2s ease;
-}
-
-.btn-mas-info:hover {
-  background: #0595b7;
 }
 
 /* ===== Botón de WhatsApp en Modal ===== */
@@ -330,3 +309,35 @@
     align-self: center;
   }
 }
+ /*Overlay  */
+ .benefit-card {
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* ===== Overlay solo si existe ===== */
+.overlay-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #07abd4;
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none; /* El click llega a la card */
+}
+
+/* Aparece en hover */
+.benefit-card:hover .overlay-info {
+  opacity: 1;
+}
+

@@ -4,7 +4,7 @@ import "./List.css";
 import { useSelector } from "react-redux";
 
 export const ClientesList = () => {
-  const baseUrl = "http://localhost:4000/api";
+  const baseUrl = import.meta.env.VITE_BASE_API_URL;
   const [clientes, setClientes] = useState([]);
   const [search, setSearch] = useState("");
   const [debounced, setDebounced] = useState("");

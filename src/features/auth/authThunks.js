@@ -1,16 +1,18 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { onCheckingAuth, onLoginAuth, onLogoutAuth } from "./authSlice";
+import { FaCcJcb } from "react-icons/fa";
 
 // Cambiá por tu endpoint real
-const baseUrl = "http://localhost:4000"
+const baseUrl = import.meta.env.VITE_BASE_API_URL;
 
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
-  async ({ correo, contraseña }, { rejectWithValue }) => {
+  async ({ correo, contraseña, remember }, { rejectWithValue }) => {
     try {
-      const res = await axios.post(`${baseUrl}/api/usuarios/login`, { correo, contraseña });
-      return res.data; // Devuelve { _id, nombre, correo, rol, token }
+      const { data } = await axios.post(`${baseUrl}/usuarios/login`, { correo, contraseña });
+
+      return { ...data, remember };
     } catch (error) {
       const msg = error.response?.data?.message || "Error al iniciar sesión";
       return rejectWithValue(msg);
@@ -21,7 +23,7 @@ export const registerUser = (userData) => {
   return async (dispatch) => {
     dispatch(onCheckingAuth());
     try {
-      const { data } = await axios.post(`${baseUrl}/api/usuarios/registro`, userData);
+      const { data } = await axios.post(`${baseUrl}/usuarios/registro`, userData);
 
       // Guardamos el token
       localStorage.setItem("token", data.token);
@@ -51,3 +53,32 @@ export const registerUser = (userData) => {
     }
   };
 };
+
+export const checkAuthToken = createAsyncThunk(
+  "auth/checkToken",
+  async (_, { rejectWithValue }) => {
+    const token =
+      localStorage.getItem("token") || sessionStorage.getItem("token");
+
+    if (!token) return rejectWithValue("No token");
+
+    try {
+      const data = await axios.get(`${baseUrl}/usuarios/renew`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+        return {
+        user: {
+          _id: data._id,
+          nombre: data.nombre,
+          apellido: data.apellido,
+          correo: data.correo,
+          rol: data.rol,
+        },
+        token: data.token,
+      };
+
+    } catch (error) {
+      return rejectWithValue("Token expirado");
+    }
+  }
+);

@@ -8,7 +8,9 @@ import {
   onError,
 } from "./usuariosSlice";
 
-const API_URL = "http://localhost:4000/api/usuarios";
+const baseUrl = import.meta.env.VITE_BASE_API_URL;
+const API_URL = `${baseUrl}/usuarios`
+
 
 // 🔹 Cargar todos los usuarios (requiere token)
 export const startLoadingUsuarios = () => {

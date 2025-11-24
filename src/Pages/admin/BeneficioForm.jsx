@@ -17,6 +17,7 @@ export const BeneficioForm = () => {
 
   const [titulo, setTitulo] = useState("");
   const [descripcion, setDescripcion] = useState("");
+  const [texto, setTexto] = useState("");
   const [masInfo, setMasInfo] = useState(false);
   const [imagen, setImagen] = useState(null);
 
@@ -35,6 +36,7 @@ export const BeneficioForm = () => {
     const formData = new FormData();
     formData.append("titulo", titulo);
     formData.append("descripcion", descripcion);
+    formData.append("texto", texto);
     formData.append("masInfo", masInfo);
     if (imagen) formData.append("imagen", imagen);
 
@@ -81,6 +83,19 @@ export const BeneficioForm = () => {
           />
           <label className="form-check-label">Tiene más información</label>
         </div>
+
+
+        {masInfo && (
+          <div className="mb-3">
+            <label className="form-label">Texto</label>
+            <textarea
+              className="form-control"
+              value={texto}
+              onChange={(e) => setTexto(e.target.value)}
+              required
+            ></textarea>
+          </div>
+        )}
 
         <div className="mb-3">
           <label className="form-label">Imagen</label>

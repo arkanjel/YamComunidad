@@ -40,15 +40,25 @@ export const UsuarioForm = () => {
     setFormData((s) => ({ ...s, [e.target.name]: e.target.value }));
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    if (id) {
-      await dispatch(startUpdateUsuario(id, formData));
-    } else {
-      await dispatch(startAddUsuario(formData));
-    }
-    navigate("/admin/usuarios");
-  };
+const onSubmit = async (e) => {
+  e.preventDefault();
+
+  // Clonamos el formData
+  const dataToSend = { ...formData };
+
+  // ❌ Si la contraseña está vacía NO se envía
+  if (!dataToSend.contraseña || dataToSend.contraseña.trim() === "") {
+    delete dataToSend.contraseña;
+  }
+
+  if (id) {
+    await dispatch(startUpdateUsuario(id, dataToSend));
+  } else {
+    await dispatch(startAddUsuario(dataToSend));
+  }
+
+  navigate("/admin/usuarios");
+};
 
   return (
     <div className="login-page">

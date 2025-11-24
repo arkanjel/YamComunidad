@@ -1,25 +1,19 @@
 import { useSelector } from "react-redux";
-import "./VideoHero.css";
+import "./VideoBackground.css";
 
-export const VideoHero = () => {
+export const VideoBackground = () => {
   const { media } = useSelector((state) => state.siteMedia);
-  if (!media?.videoHero) return null;
+
+  if (!media?.videoBienvenida) return null;
+
   // Convertir a embed
-  const id = media.videoHero.split("v=")[1]?.split("&")[0];
+  const id = media.videoBienvenida.split("v=")[1]?.split("&")[0];
   const youtubeEmbed = `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&modestbranding=1&playlist=${id}`;
 
   return (
-    // <video
-    //   id="hero"
-    //   className="hero-video"
-    //   src="/assets/videos/video landing.mp4"
-    //   autoPlay
-    //   muted
-    //   loop
-    //   playsInline
-    // ></video>\
-    <div className="hero-iframe-container">
-      <div className="video-bg-wrapper-hero">
+<>
+    <div className="video-bg-container">
+      <div className="video-bg-wrapper">
         <iframe
           src={youtubeEmbed}
           title="Video de bienvenida"
@@ -27,7 +21,9 @@ export const VideoHero = () => {
           allow="autoplay; fullscreen"
         ></iframe>
       </div>
-    </div>
 
+      <div className="video-overlay"></div>
+    </div>
+    </>
   );
 };

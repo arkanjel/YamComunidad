@@ -7,6 +7,10 @@ import { DevPage } from "../Pages/admin/DevPage";
 import { AdminLayout } from "../components/admin/AdminLayout";
 import { ClientesList } from "../Pages/admin/ClienteList";
 import { ClienteForm } from "../Pages/admin/ClienteForm";
+import { TitulosList } from "../Pages/admin/TitulosList";
+import { TitulosForm } from "../Pages/admin/TitulosForm";
+import SiteMediaForm from "../Pages/admin/SiteMediaFrom";
+
 
 export const AdminRouter = () => {
   return (
@@ -23,9 +27,17 @@ export const AdminRouter = () => {
         <Route path="usuarios/editar/:id" element={<UsuarioForm />} />
 
         {/* Clientes */}
-        <Route path="clientes" element={<ClientesList/>}/>
-        <Route path="clientes/nuevo" element={<ClienteForm/>}/>
-        <Route path="clientes/editar/:id" element={<ClienteForm/>}/>
+        <Route path="clientes" element={<ClientesList />} />
+        <Route path="clientes/nuevo" element={<ClienteForm />} />
+        <Route path="clientes/editar/:id" element={<ClienteForm />} />
+
+        {/* Titulos */}
+        <Route path="titulos" element={<TitulosList />} />
+        <Route path="titulos/nuevo" element={<TitulosForm />} />
+        <Route path="titulos/editar/:id" element={<TitulosForm />} />
+
+        {/* SiteMedia */}
+        <Route path="SiteMedia" element={<SiteMediaForm/>}/>
 
         {/* Dev / misc */}
         <Route path="dev" element={<DevPage />} />

@@ -1,16 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser } from "./authThunks";
+import { loginUser, checkAuthToken } from "./authThunks";
 
 export const authSlice = createSlice({
   name: "auth",
   initialState: {
-    status: "not-authenticated", // 'checking' | 'authenticated' | 'not-authenticated'
+    status: "not-authenticated",
     uid: null,
     nombre: null,
     apellido: null,
     correo: null,
     rol: null,
-    token: localStorage.getItem("token") || null,
+    token: localStorage.getItem("token") || sessionStorage.getItem("token") || null,
     errorMessage: null,
   },
 
@@ -24,14 +24,11 @@ export const authSlice = createSlice({
       state.status = "authenticated";
       state.uid = payload._id;
       state.nombre = payload.nombre;
-      state.apellido = payload.payload.apellido;
+      state.apellido = payload.apellido;
       state.correo = payload.correo;
       state.rol = payload.rol;
       state.token = payload.token;
       state.errorMessage = null;
-
-      // Guardar token localmente
-      localStorage.setItem("token", payload.token);
     },
 
     onLogoutAuth: (state, { payload }) => {
@@ -44,8 +41,8 @@ export const authSlice = createSlice({
       state.token = null;
       state.errorMessage = payload?.errorMessage || null;
 
-      // Eliminar token local
       localStorage.removeItem("token");
+      sessionStorage.removeItem("token");
     },
   },
 
@@ -62,13 +59,35 @@ export const authSlice = createSlice({
         state.correo = action.payload.correo;
         state.rol = action.payload.rol;
         state.token = action.payload.token;
-        state.errorMessage = null;
 
-        localStorage.setItem("token", action.payload.token);
+        if (action.payload.remember) {
+          localStorage.setItem("token", action.payload.token);
+        } else {
+          sessionStorage.setItem("token", action.payload.token);
+        }
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.status = "not-authenticated";
-        state.errorMessage = action.payload || "Error en el login";
+        state.errorMessage = action.payload;
+      })
+
+      .addCase(checkAuthToken.fulfilled, (state, action) => {
+        state.status = "authenticated";
+        state.uid = action.payload.user._id;
+        state.nombre = action.payload.user.nombre;
+        state.apellido = action.payload.user.apellido;
+        state.correo = action.payload.user.correo;
+        state.rol = action.payload.user.rol;
+        state.token = action.payload.token;
+
+        localStorage.setItem("token", action.payload.token);
+      })
+      .addCase(checkAuthToken.rejected, (state) => {
+        state.status = "not-authenticated";
+        state.token = null;
+
+        localStorage.removeItem("token");
+        sessionStorage.removeItem("token");
       });
   },
 });

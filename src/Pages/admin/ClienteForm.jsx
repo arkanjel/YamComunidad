@@ -6,7 +6,8 @@ export const ClienteForm = () => {
   const navigate = useNavigate();
   const { id } = useParams(); // si existe => modo edición
   const { token } = useSelector((state) => state.auth);
-  const baseUrl = "http://localhost:4000/api/clientes";
+  const baseUrl1 = import.meta.env.VITE_BASE_API_URL;
+  const baseUrl = `${baseUrl1}/clientes`
 
   const [nombre, setNombre] = useState("");
   const [logo, setLogo] = useState(null);

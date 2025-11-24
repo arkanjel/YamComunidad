@@ -17,7 +17,7 @@ export const BeneficiosList = () => {
   const [debounced, setDebounced] = useState("");
   const [page, setPage] = useState(1);
   const perPage = 8;
-
+  const baseUrl = import.meta.env.VITE_BASE_API_URL;
   useEffect(() => {
     // solo carga si no hay datos para evitar recargas innecesarias
     if (!beneficios || beneficios.length === 0) {
@@ -91,7 +91,7 @@ export const BeneficiosList = () => {
                 {b.imagen ? ( 
                   <img src={ b.imagen.startsWith("http") ? 
                     b.imagen
-                     : `http://localhost:4000/api/uploads/${b.imagen}`
+                     : `${baseUrl}/uploads/${b.imagen}`
                      } 
                      alt={b.titulo} /> ) : 
                      ( <img src="/assets/img/noimagen.jpg" alt={b.titulo} />

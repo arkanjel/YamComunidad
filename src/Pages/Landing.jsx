@@ -1,5 +1,5 @@
 import { Fondo } from "../components/fondo/fondo";
-import { Form } from "../components/form/Form";
+import { Footer } from "../components/footer/Footer";
 import { Hero } from "../components/hero/Hero";
 import { VideoHero } from "../components/hero/VideoHero";
 import { LogoCarousel } from "../components/logoCarousel/LogoCarousel";
@@ -15,7 +15,7 @@ export const Landing = () => {
       <Hero />
       <Servicios />
       <LogoCarousel/>
-      {/* <Form /> */}
+      <Footer/>
     </>
   );
 };

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./LogoCarousel.css";
 
-const baseUrl = "http://localhost:4000";
+const baseUrl = import.meta.env.VITE_BASE_API_URL;
 
 export const LogoCarousel = () => {
   const [clientes, setClientes] = useState([]);
@@ -10,7 +10,7 @@ export const LogoCarousel = () => {
   useEffect(() => {
     const fetchClientes = async () => {
       try {
-        const { data } = await axios.get(`${baseUrl}/api/clientes`);
+        const { data } = await axios.get(`${baseUrl}/clientes`);
         setClientes(data);
       } catch (error) {
         console.error("Error cargando clientes:", error);
@@ -22,7 +22,7 @@ export const LogoCarousel = () => {
   return (
     <div className="carousel-container">
       <h2 className="carousel-title">
-        Bodegas que ya colaboran con nosotros
+        Empresas que ya colaboran con nosotros
       </h2>
 
       <div className="carousel-track">

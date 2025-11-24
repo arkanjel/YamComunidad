@@ -61,7 +61,7 @@ export const Navbar = () => {
             </button>
           </li>
           <li>
-            <button className="navbar-btn" onClick={() => handleScroll("form")}>Contacto</button>
+            <button className="navbar-btn" onClick={() => handleScroll("contacto")}>Contacto</button>
           </li>
         </ul>
       </nav>

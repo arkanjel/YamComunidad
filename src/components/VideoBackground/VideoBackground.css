@@ -1,0 +1,77 @@
+/* CONTENEDOR GENERAL */
+.video-bg-container {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* WRAPPER QUE CONTIENE EL IFRAME */
+.video-bg-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* VIDEO */
+.video-bg-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+}
+
+
+/* CAPA PARA OSCURECER */
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+/* ------------------------------- */
+/*     📱 OPTIMIZACIÓN MOBILE      */
+/* ------------------------------- */
+
+@media (max-width: 768px) {
+  /* En móviles hay más proporción vertical, así que aumentamos el zoom */
+  .video-bg-wrapper {
+    width: 200%;
+    height: 200%;
+  }
+
+  .iframe-bg-container iframe {
+
+  width: 600vw;   /* un poco más grande para que cubra con blur */
+  height: 320vh;
+  transform: translate(-50%, -50%);
+  filter: blur(14px);
+
+}
+}
+
+@media (max-width: 480px) {
+  /* En móviles muy chicos aumentamos todavía más el zoom */
+  .video-bg-wrapper {
+    filter: blur(14px);
+    width: 400%;
+    height: 250%;
+  }
+
+  /* Extra: subir un poco el video para centrar mejor */
+  .video-bg-wrapper {
+    top: 45%;
+  }
+
+  .iframe-bg-container iframe {
+  width: 300%;   /* un poco más grande para que cubra con blur */
+  height: 320vh;
+  transform: translate(-50%, -50%);
+  filter: blur(14px);
+
+}
+}
