@@ -1,9 +1,8 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-// import { useSelector } from "react-redux";
 import { PublicRouter } from "./PublicRouter";
 import { AdminRouter } from "./AdminRouter";
 import { ProtectedRoute } from "../components/admin/ProtectedRoute";
-import { Landing } from "../Pages/landing";
+import { Landing } from "../Pages/LandingPage";
 import { useEffect } from "react";
 import { startLoadingTitulos } from "../features/Titulos/titulosThunks";
 import { getSiteMedia } from "../features/siteMedia/sitemediaThunk";
