@@ -8,7 +8,6 @@ import { useEffect } from "react";
 import { startLoadingTitulos } from "../features/Titulos/titulosThunks";
 import { getSiteMedia } from "../features/siteMedia/sitemediaThunk";
 import { useDispatch } from "react-redux";
-import { onLoginAuth } from "../features/auth/authSlice";
 import { checkAuthToken, loginUser } from "../features/auth/authThunks";
 
 export const AppRouter = () => {
