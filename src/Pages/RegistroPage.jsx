@@ -1,4 +1,4 @@
-import { Fondo } from "../components/fondo/fondo"
+import { Fondo } from "../components/fondo/FondoA"
 import { Register } from "../components/login/Register"
 
 

@@ -1,4 +1,4 @@
-import { Fondo } from "../components/fondo/fondo";
+import { Fondo } from "../components/fondo/FondoA";
 import { Login } from "../components/login/Login";
 
 export const LoginPage = ({ setIsAuth }) => {
