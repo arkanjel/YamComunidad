@@ -8,7 +8,6 @@ export const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { nombre, apellido, rol } = useSelector((state) => state.auth);
-
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
