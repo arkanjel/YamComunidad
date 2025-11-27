@@ -2,8 +2,7 @@
   width: 100%;
   overflow: hidden;
   padding: 2rem 0;
-  border-radius: 8px;
-  background: #ffffff8c;
+  background: #ffffff;
   text-align: center;
   position: relative;
 }
@@ -21,29 +20,6 @@
   width: max-content;
   animation: scroll 25s linear infinite;
 }
-
-/* 🔹 Efecto de fade en bordes */
-.carousel-container::before,
-.carousel-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 200px; /* ancho del área difuminada */
-  z-index: 2;
-  pointer-events: none; /* no bloquea clicks */
-}
-
-.carousel-container::before {
-  left: 0;
-  background: linear-gradient(to right, #fff 0%, transparent 50%);
-}
-
-.carousel-container::after {
-  right: 0;
-  background: linear-gradient(to left, #fff 0%, transparent 50%);
-}
-
 .carousel-logo {
   flex: 0 0 auto;
   width: 150px;

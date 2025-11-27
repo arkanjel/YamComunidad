@@ -63,10 +63,12 @@ export const checkAuthToken = createAsyncThunk(
     if (!token) return rejectWithValue("No token");
 
     try {
-      const data = await axios.get(`${baseUrl}/usuarios/renew`, {
+      const { data } = await axios.get(`${baseUrl}/usuarios/renew`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-        return {
+      // localStorage.removeItem("token");
+
+      return {
         user: {
           _id: data._id,
           nombre: data.nombre,

@@ -6,13 +6,14 @@
 
 /* Encabezado */
 .section-header .badge {
-  background: #e5edff;
-  color: #2563eb;
-  font-size: 1.3rem;
+  background: #e5f3ff;
+  color: #165df5;
+  font-size: 1.5rem;
   padding: 0.3rem 0.8rem;
   border-radius: 10px;
   display: inline-block;
   margin-bottom: 1rem;
+  font-weight: bold;
 }
 
 .section-header h2 {
@@ -224,20 +225,6 @@
   margin-bottom: 0.8rem;
 }
 
-/* ===== Botón Más Info ===== */
-.btn-mas-info {
-  width: 100%;
-  margin-top: 1rem;
-  background: #07abd470;
-  color: rgb(0, 0, 0);
-  font-size: 2.5rem;
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 2px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background 0.2s ease;
-}
 
 /* ===== Botón de WhatsApp en Modal ===== */
 .btn-whatsapp {
@@ -259,7 +246,10 @@
 /* ======= RESPONSIVE ======= */
 @media (max-width: 768px) {
 
-
+.modal-backdrop{
+  position: fixed;
+  z-index: 9999;
+}
  .modal-content {
     padding: 1.2rem;
   }

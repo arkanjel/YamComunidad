@@ -6,41 +6,43 @@ import { Landing } from "../Pages/LandingPage";
 import { useEffect } from "react";
 import { startLoadingTitulos } from "../features/Titulos/titulosThunks";
 import { getSiteMedia } from "../features/siteMedia/sitemediaThunk";
-import { useDispatch } from "react-redux";
-import { checkAuthToken, loginUser } from "../features/auth/authThunks";
+import { useDispatch, useSelector } from "react-redux";
+import { checkAuthToken } from "../features/auth/authThunks";
 
 export const AppRouter = () => {
-  //  const { status } = useSelector((state) => state.auth);
-  //   const isAuth = status === "authenticated";
+  const { status } = useSelector((state) => state.auth);
+  const isAuth = status === "authenticated";
   const dispatch = useDispatch();
 
 
   const validarusuario = async () => {
-    const resultAction = await dispatch(checkAuthToken())
-    console.log("App:"+resultAction)
-
-  }
+    const resultAction = await dispatch(checkAuthToken());
+    console.log("App:", resultAction);
+  };
 
   useEffect(() => {
     dispatch(startLoadingTitulos());
     dispatch(getSiteMedia());
     const token = localStorage.getItem("token");
-    // const user = localStorage.getItem("user");
+
     if (token) {
-      validarusuario()
+      validarusuario();
     }
-    // if (token && user) {
-    //   const resultAction = await dispatch(checkAuthToken())
-    //   const userData = JSON.parse(user);
-    //   console.log(resultAction.user)
-    //   // dispatch(onLoginAuth(userData));
-    // }// <--- restaura nombre, apellido, rol, etc.
 
   }, []);
+
+   // Mientras valida el token
+  if (status === "checking") return <div>Cargando...</div>;
 
   return (
     <Routes>
       {/* Rutas públicas */}
+
+      <Route
+        path="/*"
+        element={!isAuth ? <PublicRouter /> : <Navigate to="/inicio" />}
+      />
+
       <Route path="/*" element={<PublicRouter />} />
 
       <Route

@@ -17,9 +17,9 @@ export const Login = () => {
     e.preventDefault();
     // Ejecutar el thunk
     const resultAction = await dispatch(loginUser({ correo, contraseña, remember }));
+    
     if (remember) {
       localStorage.setItem("token", resultAction.payload.token);
-      localStorage.setItem("user", JSON.stringify(resultAction.payload));
     } else {
       sessionStorage.setItem("token", resultAction.payload.token);
     }
