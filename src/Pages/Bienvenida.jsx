@@ -43,14 +43,14 @@ export const Bienvenida = () => {
         <div className="bienvenida-content">
 
           {/* 👉 Usa el título desde Redux */}
-          {/* <h1 className="bienvenida-titulo">
-            {tituloBienvenida?.titulo || "Bienvenido a la Comunidad Yam"}
-          </h1> */}
+          <h1 className="bienvenida-titulo">
+            {/* {tituloBienvenida?.titulo || "Bienvenido a la Comunidad Yam"} */}
+          </h1>
 
-          {/* <p className="bienvenida-texto">
-            {tituloBienvenida?.texto1 ||
-              "Un espacio para conectar, aprender y potenciar tu gestión de capital humano"}
-          </p> */}
+          <p className="bienvenida-texto">
+            {/* {tituloBienvenida?.texto1 ||
+              "Un espacio para conectar, aprender y potenciar tu gestión de capital humano"} */}
+          </p>
 
           <div className="bienvenida-botones">
             <Link to="/login" className="btn-primario">
