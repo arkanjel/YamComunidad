@@ -8,6 +8,7 @@ import { startLoadingTitulos } from "../features/Titulos/titulosThunks";
 import { getSiteMedia } from "../features/siteMedia/sitemediaThunk";
 import { useDispatch, useSelector } from "react-redux";
 import { checkAuthToken } from "../features/auth/authThunks";
+import { onCheckingAuth } from "../features/auth/authSlice";
 
 export const AppRouter = () => {
   const { status } = useSelector((state) => state.auth);
@@ -26,8 +27,8 @@ export const AppRouter = () => {
     const token = localStorage.getItem("token");
 
     if (token) {
-      validarusuario();
-    }
+      dispatch(onCheckingAuth())
+      validarusuario();}
 
   }, []);
 

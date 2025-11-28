@@ -9,16 +9,7 @@ export const VideoHero = () => {
   const youtubeEmbed = `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&modestbranding=1&playlist=${id}`;
 
   return (
-    // <video
-    //   id="hero"
-    //   className="hero-video"
-    //   src="/assets/videos/video landing.mp4"
-    //   autoPlay
-    //   muted
-    //   loop
-    //   playsInline
-    // ></video>\
-    <div className="hero-iframe-container">
+    <div className="hero-iframe-container" id="hero">
       <div className="video-bg-wrapper-hero">
         <iframe
           src={youtubeEmbed}
