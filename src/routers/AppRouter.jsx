@@ -9,6 +9,7 @@ import { getSiteMedia } from "../features/siteMedia/sitemediaThunk";
 import { useDispatch, useSelector } from "react-redux";
 import { checkAuthToken } from "../features/auth/authThunks";
 import { onCheckingAuth } from "../features/auth/authSlice";
+import { Loader } from "../components/loader/Loader";
 
 export const AppRouter = () => {
   const { status } = useSelector((state) => state.auth);
@@ -33,7 +34,7 @@ export const AppRouter = () => {
   }, []);
 
    // Mientras valida el token
-  if (status === "checking") return <div>Cargando...</div>;
+  if (status === "checking") return <Loader/>;
 
   return (
     <Routes>
